@@ -1,0 +1,203 @@
+/* 
+NOTE: You don't need to mess around with CSS to follow the tutorial. Focus on the
+JavaScript instead!
+=========================
+Some personal resets
+*/
+
+html {
+  box-sizing: border-box;
+}
+
+*,/*select all element*/*::before,*::after {/*Insert something after the content of each <*> element*/
+  box-sizing: inherit;
+}/*Insert something after the content of each <*> element*/
+
+body {
+  margin: 0;
+}
+
+/* Responsive Images (when the apps run on tab,smartphone,webpage)*/
+
+embed,iframe,img,object,video {
+  max-width: 100%;
+}
+
+/*
+1.unordered lists (<ul>) - the list items are marked with bullets
+2.ordered lists (<ol>) - the list items are marked with numbers or letters
+3.The <li> tag defines a list item
+4.p defines as paragraph, h defines as head (up to 6)
+5.Use the <pre> element when displaying text with unusual formatting, or some sort of computer code.
+6.The <blockquote> tag specifies a section that is quoted from another source.
+7.Use a <figure> element to mark up a photo in a document, and a <figcaption> element to define a caption for the photo
+8.Use the <hr> tag to define a thematic change in the content(normally result will be draw a line to seperate two content)
+*/
+
+h1,h2,h3,h4,h5,h6,ul,ol,li,p,pre,blockquote,figure,hr {
+  margin: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+a {/*<a> tag defines a hyperlink*/
+  text-decoration: none;
+  /*
+  The text-decoration property specifies the decoration added to text
+  Also, it can be defines as fucntion "U" in microsoft word
+  e.g:overline, line-through, underline 
+  */
+}
+
+a:focus {/*The :focus selector is used to select the element that has focus.*/
+  outline: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  /*
+   Displays an element as a block element (like <p>). It starts on a new line, and takes up the whole width
+   e.g: None//Inline//Block//inline-block
+  */
+  display: block;
+}
+
+/* Removes all decimals and discs from lists */
+
+ol,ul {
+  list-style: none;
+}
+
+/* 
+ * Completely resets form items
+ * ----------------------------
+ * Super hard reset that removes all borders
+ * and radiuses of all form items (including
+ * checkboxes and radios)
+*/
+
+input,textarea,button {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  outline: none;
+  appearance: none;
+  text-align: left;
+}
+
+/*
+The :hover selector is used to select elements when you mouse over them. 
+The :active selector is used to select and style the active link. A link becomes active when you click on it.
+The :focus selector is used to select the element that has focus.*/
+input:hover,input:active,input:focus,textarea:hover,
+textarea:active,textarea:focus,button:hover,button:active,button:focus {
+  outline: none;
+}
+
+:root {/*The :root selector matches the document's root element.*/
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+html {
+  font-size: 185%;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+body {
+  align-items: center;
+  background-image: linear-gradient(to right, #7371d6, #5452f3, #0c184b);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+
+
+/*maximum width of container*/
+.container {
+  max-width: 20em;
+}
+
+/*paragraph*/
+.container > p {
+  margin-top: 1em;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: dashed;
+  border-color: black;
+  border-radius: 12px;
+  background-color: antiquewhite;
+  color: #f02a2a;
+  font-size: 14pt;
+  text-align: left;
+}
+
+/*full calculator*/
+.calculator {
+  border-radius: 1em 1em 12pt 16px; /*frame shape top-left | top-right | bottom-right | bottom-left */
+  border-style: solid;/*border style dot, dashed or solid*/
+  border-color: rgba(22, 12, 12, 0.548);/*border color*/
+  box-shadow: 10px 10px 10px 5px rgb(71, 66, 66);/*horizontal move|vertical move|blur radius|spread radius*/
+  margin-top: 2em;/*margin length top*/
+  margin-bottom: auto;/*margin length bottom*/
+  margin-left: auto;/*margin length left*/
+  margin-right: auto;/*margin length right*/
+  max-width: 15em;
+  overflow: hidden;/*hide edge of the key and display which are overflows*/
+}
+
+/*display of calculator*/
+.calculator__display {
+  border-style: solid;
+  border-radius: 0.53em 0.53em 0 0;
+  background-color: rgb(231, 191, 191);/*Display background color*/
+  color: rgba(19, 10, 10, 0.966);/*content color in html*/
+  font-size: 1.714285714em;/*font size of content*/
+  padding: 0.5em 0.75em;/*(top&bottom) (left & right)*/
+  text-align: right;/*content position*/
+}
+
+/*plus minus divide 0-9 . ac*/
+.calculator__keys {
+  background-color: #999;/*color of background button*/
+  display: grid;/*sort position of calculator keys*/ 
+  grid-gap: 1px;/*gird-gap of every keys (pixel)*/
+  grid-template-columns: repeat(4, 1fr);
+  /*every column have 4box and Column takes up one fraction unit of the remaining space*/
+}
+
+
+.calculator__keys > * {/*Selects all <calculator_key> elements where the parent is a <*> element*/
+  background-color: #fff;/*0-9 . ac bckgrnd color*/
+  padding: 0.5em 1.25em;/*0-9 . ac padding*/
+  position: relative;
+  text-align: center;
+}
+
+.calculator__keys > *:active::before,.calculator__keys > .is-depressed::before {
+  background-color:rgba(0, 0, 0, 0.2);/*color of keys change after click*/
+  bottom: 0;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;/*color of keys (shadow) change after click*/
+  content: "";
+  left: 0;
+  opacity: 0.3;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+/*operator color*/
+.key--operator {
+  background-color: #eee;
+}
+
+.key--equal {
+  background-image: linear-gradient(to bottom right,#dd2929, #ff7033);/*linear-gradient(direction, color-stop1, color-stop2, ...)*/
+  grid-column: -2;/*place the key--equal in column -2*/
+  grid-row: 2 / span 4;/*from the row no.2 and span 4 times (3,4,5,6) to no.6*/
+}
